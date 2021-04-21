@@ -7,12 +7,21 @@
 *  실제로 한국시각장애인연합회에 따르면 파손 및 잘못된 설치로 인해 미사용률이 74%로 나타났다
 
  
+ 
+ 
+ 
 ### 애플리케이션 소개
 * 이 애플리케이션은 객체 탐지를 위해 모바일 환경에서 작동하기 가벼운 SSD-MobileNet을 사용하였으며, **[중국](https://dl.orangedox.com/9ZvH36)** 과 한국의 Dataset을 전이 학습시켰다.
 * 신호등(초록 색, 빨간 색)과 횡단보도, 자동차를 탐지할 뿐만 아니라, 횡단보도 보행 시 상황에 따라 각기 다른 음성 안내를 지원한다.
 
 
+
+
+
 ### 실행 영상
+
+
+
 
 
 
@@ -40,6 +49,9 @@ class는 탐지하고자 하는 객체로 다음과 같이 라벨링 하였다
 |:--------|:--------:|
 | **[SSD-MobileNet-V2 FPNLite 640x640](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md)** | 28.2 | 
 | 전이 학습한 모델 | 32.0 |
+
+
+
 
 
 

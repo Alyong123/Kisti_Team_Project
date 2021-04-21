@@ -39,4 +39,4 @@ class는 탐지하고자 하는 객체로 다음과 같이 라벨링 하였다
 * 탐지 후에는 상황에 따라서 사용자에게 TTS(Text-To-Speech)을 통해 음성 안내를 시작한다.
 
 다음과 같은 순서대로 작동한다. 검은색=진행방향, 초록색=객체 탐지(인식) 했을경우, 빨간색=객체 탐지(인식) 못했을경우
-https://github.com/Alyong123/Kisti_Team_Project/issues/1#issue-863998422
+![화면 캡처 2021-04-22 001339](https://user-images.githubusercontent.com/68493312/115577730-9f6ccd00-a2ff-11eb-9b80-601e17106975.png)

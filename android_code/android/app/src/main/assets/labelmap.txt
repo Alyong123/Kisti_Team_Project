@@ -1,0 +1,4 @@
+Crosswalk
+Traffic_Light_Green
+Traffic_Light_Red
+Car

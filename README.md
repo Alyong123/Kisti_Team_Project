@@ -34,6 +34,17 @@ class는 탐지하고자 하는 객체로 다음과 같이 라벨링 하였다
 ### 모델
 
 
+
+**map 결과**
+| 모델 | 결과 값 | 
+|:--------|:--------:|
+| [SSD-MobileNet-V2 FPNLite 640x640](https://github.com/tensorflow/models/blob/master/rese
+   arch/object_detection/g3doc/tf2_detection_zoo.md)| 28.2 | 
+| 전이 학습한 모델 | 32.0 |
+
+
+
+
 ### 애플리케이션
 * 애플리케이션을 실행하면 모바일 기기에서 실시간으로 영상을 받아 객체를 탐지한다.
 * 탐지 후에는 상황에 따라서 사용자에게 TTS(Text-To-Speech)을 통해 음성 안내를 시작한다.

@@ -25,8 +25,18 @@
 - 예시: [Crosswalk,	24,	367,	756,	466,	john_IMG_0680.jpg,	768,	576]
 
 class는 탐지하고자 하는 객체로 다음과 같이 라벨링 하였다
-  * 횡단보도 = Tra
-  *  빨간불 =
-  *  초록불 =
-  *  자동차 =
+  * 횡단보도 = Crosswalk
+  *  빨간불 = Traffic_Light_red
+  *  초록불 = Traffic_Light_green
+  *  자동차 = Car
 
+
+### 모델
+
+
+### 애플리케이션
+* 애플리케이션을 실행하면 모바일 기기에서 실시간으로 영상을 받아 객체를 탐지한다.
+* 탐지 후에는 상황에 따라서 사용자에게 TTS(Text-To-Speech)을 통해 음성 안내를 시작한다.
+
+다음과 같은 순서대로 작동한다. 검은색=진행방향, 초록색=객체 탐지(인식) 했을경우, 빨간색=객체 탐지(인식) 못했을경우
+https://github.com/Alyong123/Kisti_Team_Project/issues/1#issue-863998422

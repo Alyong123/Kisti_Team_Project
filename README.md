@@ -42,6 +42,6 @@ class는 탐지하고자 하는 객체로 다음과 같이 라벨링 하였다
 ![화면 캡처 2021-04-22 002334](https://user-images.githubusercontent.com/68493312/115579319-02ab2f00-a301-11eb-8e59-8814ce4d2b05.png)
 
 
-#### 상황 별 음성안내
+### 상황 별 음성안내
 
 ![화면 캡처 2021-04-22 003126](https://user-images.githubusercontent.com/68493312/115580509-1b681480-a302-11eb-9db8-7648cbf108e1.png)

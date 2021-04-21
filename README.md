@@ -41,4 +41,7 @@ class는 탐지하고자 하는 객체로 다음과 같이 라벨링 하였다
 다음과 같은 순서대로 작동한다.  [**검은색=진행방향, 초록색=객체 탐지(인식) 했을경우, 빨간색=객체 탐지(인식) 못했을경우**]
 ![화면 캡처 2021-04-22 002334](https://user-images.githubusercontent.com/68493312/115579319-02ab2f00-a301-11eb-8e59-8814ce4d2b05.png)
 
+상황 별 음성안내
+| Column 1 | Column 2 | Column 3 | Column 4 | | -------- | :------: | -------- | -------- | | No span | Span across three columns |||
 
+출처: https://poorman.tistory.com/352 [poorman]

@@ -42,6 +42,7 @@ class는 탐지하고자 하는 객체로 다음과 같이 라벨링 하였다
 ![화면 캡처 2021-04-22 002334](https://user-images.githubusercontent.com/68493312/115579319-02ab2f00-a301-11eb-8e59-8814ce4d2b05.png)
 
 상황 별 음성안내
-| Column 1 | Column 2 | Column 3 | Column 4 | | -------- | :------: | -------- | -------- | | No span | Span across three columns |||
-
-출처: https://poorman.tistory.com/352 [poorman]
+| 왼쪽 정렬 | 가운데 정렬 | 오른쪽 정렬 |
+|:--------|:--------:|--------:|
+| 내용 11 | 내용 12 | 내용 13 |
+| 내용 21 | 내용 22 | 내용 23 |

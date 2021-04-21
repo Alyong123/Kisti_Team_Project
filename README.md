@@ -19,12 +19,12 @@
 
 
 #### 라벨링
--이미지 파일에서 탐지하고자 하는 객체 Bounding Box = (x1, y1, x2, y2)처리하여 csv 파일로 만들었다.
+이미지 파일에서 탐지하고자 하는 객체 Bounding Box = (x1, y1, x2, y2)처리하여 csv 파일로 만들었다.
 
 - [class,	xmin,	ymin,	xmax,	ymax,	filename,	width,	height]
 - 예시: [Crosswalk,	24,	367,	756,	466,	john_IMG_0680.jpg,	768,	576]
 
-- class는 탐지하고자 하는 객체로 다음과 같이 라벨링 하였다
+class는 탐지하고자 하는 객체로 다음과 같이 라벨링 하였다
   * 횡단보도 = Tra
   *  빨간불 =
   *  초록불 =

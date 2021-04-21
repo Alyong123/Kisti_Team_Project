@@ -1,8 +1,0 @@
-<resources>
-    <string name="tfe_od_app_name" translation_description="Object Detection demo app [CHAR_LIMIT=40]">불사조</string>
-    <string name="tfe_od_camera_error" translation_description="Error regarding camera support[CHAR_LIMIT=40]">This device doesn\'t support Camera2 API.</string>
-    <string name="Green_signal">초록불</string>
-    <string name="Red_signal">빨간불</string>
-    <string name="Caution_car">차량 주의</string>
-    <string name="Crosswalk_detected">횡단보도</string>
-</resources>

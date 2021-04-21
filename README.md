@@ -51,7 +51,7 @@ class는 탐지하고자 하는 객체로 다음과 같이 라벨링 하였다
 | 모델 | 결과 값 | 
 |:--------|:--------:|
 | **[SSD-MobileNet-V2 FPNLite 640x640](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md)** | 28.2 | 
-| 전이 학습한 모델 | 32.0 |
+| 전이 학습한 모델 | **32.0** |
 
 <br>
 <br>

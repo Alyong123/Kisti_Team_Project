@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+// 로딩화면
 public class SplashActivity extends AppCompatActivity {
     @Override
     protected  void onCreate(Bundle savedlnstanceState){

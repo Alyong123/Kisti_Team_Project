@@ -13,7 +13,7 @@ import java.util.Locale;
 
 import android.speech.tts.UtteranceProgressListener;
 import android.widget.Toast;
-
+//듀토리얼 화면
 public class TutorialActivity extends AppCompatActivity {
     private TextToSpeech tts;              // TTS 변수 선언
     private Button tutorial, start;
@@ -85,10 +85,10 @@ public class TutorialActivity extends AppCompatActivity {
                 mTts.speak(" 1.  횡단보도를 탐지합니다.", mQueue, params, "tutorial");
                 mTts.speak(" 2.  횡단보도를 탐지한 상태에서 신호등을 탐지합니다.", mQueue, params, "tutorial");
                 mTts.speak(" 3.  이때 신호등을 탐지하지 못한 경우. 주위에 도움을 요청하라는 안내를 시작합니다.", mQueue, params, "tutorial");
-                mTts.speak(" 4.  신호등 색깔이 빨간 불일 때 탐지한 후. 파란불로 바뀐 겄을 탐지했을 때만 초록불입니다와 건너시라는 안내를 시작합니다.", mQueue, params, "tutorial");
+                mTts.speak(" 4.  신호등 색깔이 빨간 불일 때 탐지한 후. 초록불로 바뀐 겄을 탐지했을 때만 초록불입니다와 건너시라는 안내를 시작합니다.", mQueue, params, "tutorial");
                 mTts.speak(" 5.  이때 자동차를 탐지한 경우. 전방에 자동차가 있으므로 주위하라는 안내를 시작합니다.", mQueue, params, "tutorial");
                 mTts.speak(" 6.  신호등 색깔이 빨간 불일 경우. 빨간불입니다와 기다리라는 안내를 시작합니다.", mQueue, params, "tutorial");
-                mTts.speak(" 7.  처음에 탐지한 신호등 색깔이 파란불일 경우. 기다리라는 안내를 시작합니다.", mQueue, params, "tutorial");
+                mTts.speak(" 7.  처음에 탐지한 신호등 색깔이 초록불일 경우. 기다리라는 안내를 시작합니다.", mQueue, params, "tutorial");
                 mTts.speak("다시 설명을 듣고자 하신다면 튜토리얼 버튼을. 넘어가시려면 시작하기 버튼을 클릭하세요.", mQueue, params, "tutorial");
             }
         });

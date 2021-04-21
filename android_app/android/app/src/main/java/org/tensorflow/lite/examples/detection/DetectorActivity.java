@@ -259,7 +259,7 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
             if (classes.contains("Traffic_Light_Green")) {
               Last_null_timestamp = 0;
               if (flag == 'R') {
-                mTts.speak("파란불입니다", mQueue, params, "Green");
+                mTts.speak("초록불입니다", mQueue, params, "Green");
                 mTts.speak("주의하시면서 건너세요", mQueue, params, "Caution");
                 if (classes.contains("Car")) {
                   mTts.speak("전방에 차량이 존재합니다. 주의해서 건너주세요", TextToSpeech.QUEUE_FLUSH, params, "Car");

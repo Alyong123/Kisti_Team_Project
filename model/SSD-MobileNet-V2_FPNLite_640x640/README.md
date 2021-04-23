@@ -11,13 +11,13 @@ object detection api의 설치가 완료되었다면 이제 학습을 위해 COC
   - “classification“ : backbone 부분의 가중치를 불러온다.			  
   - ”detection“ : backbone + neck 부분의 가중치를 불러온다			  
   -  ”full“ : backbone + neck + head 전체 모델의 가중치를 불러온다.
-
 <br>
+
 * train_input_reader 이하의...
 * label_map_path: 학습하고자 하는 라벨이 담긴 pbxt 파일 경로를 지정해줍니다.
 * input_path: 학습 데이터 TFRecord 파일 경로를 지정해줍니다.
-
 <br>
+
 * eval_input_reader 이하의...
 * label_map_path: 위와 동일
 * input_path: eval 데이터 TFRecord 파일 경로를 지정해줍니다.

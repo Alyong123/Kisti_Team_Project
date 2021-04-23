@@ -23,7 +23,7 @@
 <br>
 <br>
 
-### 데이터셋
+### image data
 * 학습에 사용된 이미지는 횡단보도, 신호등이 같이 존재 하는 장소 사진이며 **[중국 Dataset](https://dl.orangedox.com/9ZvH36)** 과 직접 촬영을 통해 수집하여 만든 **한국 Dataset**을 사용하였다
 
 ![화면 캡처 2021-04-23 143723](https://user-images.githubusercontent.com/68493312/115823897-1e6a1e80-a442-11eb-96ce-c0fcd3a522f2.png)
@@ -31,7 +31,7 @@
 <br>
 <br>
 
-### 라벨링
+### Labelling
 이미지 파일에서 탐지하고자 하는 객체 Bounding Box = (x1, y1, x2, y2)처리하여 csv 파일로 만들었다.
 
 - [class,	xmin,	ymin,	xmax,	ymax,	filename,	width,	height]
@@ -46,7 +46,7 @@ class는 탐지하고자 하는 객체로 다음과 같이 라벨링 하였다.
 <br>
 <br>
 
-### 모델
+### Model
 
 *  **[SSD-MobileNet-V2 FPNLite 640x640](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md)** 모델 에 라벨링을 통해 가공된 Dataset 을  **전이 학습** 시켰다
 
@@ -69,7 +69,7 @@ class는 탐지하고자 하는 객체로 다음과 같이 라벨링 하였다.
 <br>
 <br>
 
-### 애플리케이션
+### Application
 * 애플리케이션을 실행하면 모바일 기기에서 실시간으로 영상을 받아 객체를 탐지한다.
 * 탐지 후에는 상황에 따라서 사용자에게 TTS(Text-To-Speech)을 통해 음성 안내를 시작한다.
 

@@ -45,13 +45,14 @@ class는 탐지하고자 하는 객체로 다음과 같이 라벨링 하였다.
 
 <br>
 **map 결과**
+<br>
 
 | 모델 | 결과 값 | 
 |:--------|:--------:|
 | **[SSD-MobileNet-V2 FPNLite 640x640](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md)** | 28.2 | 
 | 전이 학습한 모델 | **32.0** |
 <br>
-<br>
+
 학습한 모델의 성능 평가를 위해 객체 탐지 모델 평가 방식 중 하나인 mAP 방식을 사용하였다.
 <br>
 전이 학습을 위해 사용한 **[SSD-MobileNet-V2 FPNLite 640x640](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md)** 의 경우 탐지하는 객체가 다르기는 하였지만 실제 객체를 탐지하는 데에는 문제가 없었다. 

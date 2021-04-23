@@ -2,6 +2,10 @@ object detection api의 설치가 완료되었다면 이제 학습을 위해 COC
 
 * 여기서 주의할점은 model zoo에 존재하는 모든 모델들이 TFLite로의 export를 지원하지 않는다는 점이다. Head가 SSD인 모델들만 지원한다고 하니, TFLite로 export하는 경우에는 SSD 모델만 선택한다.
 
+### object-detection.pbxt 를 통해 탐지할 객체를 라벨링한다.
+
+<br>
+
 ### pipeline.config 는 모델 구조와 하이퍼 파라미터, 학습과 관련된 설정 파일로 기본적으로 알아야 할 설정들은 다음과 같다.
 * num_classes: 탐지하고자 하는 class의 수
 * batch_size: 배치 사이즈 / 클수록 더 큰 GPU 메모리 혹은 메모리가 필요
@@ -23,5 +27,5 @@ object detection api의 설치가 완료되었다면 이제 학습을 위해 COC
 * input_path: eval 데이터 TFRecord 파일 경로를 지정
 <br>
 
-### object-detection.pbxt 를 통해 탐지할 객체를 라벨링한다.
+
 

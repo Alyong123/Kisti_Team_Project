@@ -16,7 +16,6 @@ fine_tune_checkpoint_type: 사용하고자 하는 모델의 타입 / “classifi
 train_input_reader 이하의...
 <br>
 label_map_path: 학습하고자 하는 라벨이 담긴 pbxt 파일 경로를 지정해줍니다.
-<br>  
 input_path: 학습 데이터 TFRecord 파일 경로를 지정해줍니다.
 
 <br>

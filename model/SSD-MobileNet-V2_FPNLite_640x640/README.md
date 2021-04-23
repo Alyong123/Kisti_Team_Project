@@ -22,7 +22,6 @@ object detection api의 설치가 완료되었다면 이제 학습을 위해 COC
 * label_map_path: 위와 동일
 * input_path: eval 데이터 TFRecord 파일 경로를 지정
 <br>
-<br>
 
 ### object-detection.pbxt 를 통해 탐지할 객체를 라벨링한다.
 

@@ -44,18 +44,17 @@ class는 탐지하고자 하는 객체로 다음과 같이 라벨링 하였다.
 *  **[SSD-MobileNet-V2 FPNLite 640x640](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md)** 모델 에 라벨링을 통해 만들어진 파일을  **전이 학습** 시켰다
 
 <br>
-<br>
-
-학습한 모델의 성능 평가를 위해 객체 탐지 모델 평가 방식 중 하나인 mAP 방식을 사용하였다.
-<br>
-전이 학습을 위해 사용한 **[SSD-MobileNet-V2 FPNLite 640x640](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md)** 의 경우 탐지하는 객체가 다르기는 하였지만 실제 객체를 탐지하는 데에는 문제가 없었다. 
-**[SSD-MobileNet-V2 FPNLite 640x640](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md)** 모델 보다 **학습한 모델**의 결과 값이 더 높게 나왔기에 사용해도 좋다고 판단하였다.
-
 **map 결과**
 | 모델 | 결과 값 | 
 |:--------|:--------:|
 | **[SSD-MobileNet-V2 FPNLite 640x640](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md)** | 28.2 | 
 | 전이 학습한 모델 | **32.0** |
+
+<br>
+학습한 모델의 성능 평가를 위해 객체 탐지 모델 평가 방식 중 하나인 mAP 방식을 사용하였다.
+<br>
+전이 학습을 위해 사용한 **[SSD-MobileNet-V2 FPNLite 640x640](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md)** 의 경우 탐지하는 객체가 다르기는 하였지만 실제 객체를 탐지하는 데에는 문제가 없었다. 
+**[SSD-MobileNet-V2 FPNLite 640x640](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md)** 모델 보다 **학습한 모델**의 결과 값이 더 높게 나왔기에 사용해도 좋다고 판단하였다.
 
 <br>
 <br>

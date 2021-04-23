@@ -24,4 +24,5 @@ object detection api의 설치가 완료되었다면 이제 학습을 위해 COC
 <br>
 <br>
 
-### object-detection.pbxt 는 탐지할 객체를 라벨링하는 
+### object-detection.pbxt 를 통해 탐지할 객체를 라벨링한다.
+

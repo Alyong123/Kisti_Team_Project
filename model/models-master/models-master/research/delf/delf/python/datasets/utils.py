@@ -19,20 +19,19 @@ import numpy as np
 from PIL import Image
 
 import tensorflow as tf
-from delf import utils as image_loading_utils
+from delf.python import utils as image_loading_utils
 
 
-def pil_imagenet_loader(path, imsize, bounding_box=None, preprocess=True):
+def pil_imagenet_loader(path, imsize, bounding_box=None, normalize=True):
   """Pillow loader for the images.
 
   Args:
     path: Path to image to be loaded.
     imsize: Integer, defines the maximum size of longer image side.
     bounding_box: (x1,y1,x2,y2) tuple to crop the query image.
-    preprocess: Bool, whether to preprocess the images in respect to the
-      ImageNet dataset.
+    normalize: Bool, whether to normalize the image.
 
-  Returns:
+  Returns: 
     image: `Tensor`, image in ImageNet suitable format.
   """
   img = image_loading_utils.RgbLoader(path)
@@ -48,7 +47,7 @@ def pil_imagenet_loader(path, imsize, bounding_box=None, preprocess=True):
   img.thumbnail((imsize, imsize), Image.ANTIALIAS)
   img = np.array(img)
 
-  if preprocess:
+  if normalize:
     # Preprocessing for ImageNet data. Converts the images from RGB to BGR,
     # then zero-centers each color channel with respect to the ImageNet
     # dataset, without scaling.
@@ -57,18 +56,16 @@ def pil_imagenet_loader(path, imsize, bounding_box=None, preprocess=True):
   return img
 
 
-def default_loader(path, imsize, bounding_box=None, preprocess=True):
+def default_loader(path, imsize, bounding_box=None, normalize=True):
   """Default loader for the images is using Pillow.
 
   Args:
     path: Path to image to be loaded.
     imsize: Integer, defines the maximum size of longer image side.
     bounding_box: (x1,y1,x2,y2) tuple to crop the query image.
-    preprocess: Bool, whether to preprocess the images in respect to the
-      ImageNet dataset.
 
   Returns:
     image: `Tensor`, image in ImageNet suitable format.
   """
-  img = pil_imagenet_loader(path, imsize, bounding_box, preprocess)
+  img = pil_imagenet_loader(path, imsize, bounding_box, normalize)
   return img

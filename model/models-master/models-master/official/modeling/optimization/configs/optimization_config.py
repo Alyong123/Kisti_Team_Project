@@ -39,7 +39,6 @@ class OptimizerConfig(oneof.OneOfConfig):
     adamw: adam with weight decay.
     lamb: lamb optimizer.
     rmsprop: rmsprop optimizer.
-    lars: lars optimizer.
   """
   type: Optional[str] = None
   sgd: opt_cfg.SGDConfig = opt_cfg.SGDConfig()
@@ -47,7 +46,6 @@ class OptimizerConfig(oneof.OneOfConfig):
   adamw: opt_cfg.AdamWeightDecayConfig = opt_cfg.AdamWeightDecayConfig()
   lamb: opt_cfg.LAMBConfig = opt_cfg.LAMBConfig()
   rmsprop: opt_cfg.RMSPropConfig = opt_cfg.RMSPropConfig()
-  lars: opt_cfg.LARSConfig = opt_cfg.LARSConfig()
 
 
 @dataclasses.dataclass

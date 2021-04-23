@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Lint as: python3
 """RetinaNet task definition."""
-from typing import Any, Optional, List, Tuple, Mapping
 
 from absl import logging
 import tensorflow as tf
@@ -30,8 +30,7 @@ from official.vision.beta.losses import maskrcnn_losses
 from official.vision.beta.modeling import factory
 
 
-def zero_out_disallowed_class_ids(batch_class_ids: tf.Tensor,
-                                  allowed_class_ids: List[int]):
+def zero_out_disallowed_class_ids(batch_class_ids, allowed_class_ids):
   """Zero out IDs of classes not in allowed_class_ids.
 
   Args:
@@ -107,9 +106,7 @@ class MaskRCNNTask(base_task.Task):
     logging.info('Finished loading pretrained checkpoint from %s',
                  ckpt_dir_or_file)
 
-  def build_inputs(self,
-                   params: exp_cfg.DataConfig,
-                   input_context: Optional[tf.distribute.InputContext] = None):
+  def build_inputs(self, params, input_context=None):
     """Build input dataset."""
     decoder_cfg = params.decoder.get()
     if params.decoder.type == 'simple_decoder':
@@ -155,10 +152,7 @@ class MaskRCNNTask(base_task.Task):
 
     return dataset
 
-  def build_losses(self,
-                   outputs: Mapping[str, Any],
-                   labels: Mapping[str, Any],
-                   aux_losses: Optional[Any] = None):
+  def build_losses(self, outputs, labels, aux_losses=None):
     """Build Mask R-CNN losses."""
     params = self.task_config
 
@@ -224,7 +218,7 @@ class MaskRCNNTask(base_task.Task):
     }
     return losses
 
-  def build_metrics(self, training: bool = True):
+  def build_metrics(self, training=True):
     """Build detection metrics."""
     metrics = []
     if training:
@@ -248,11 +242,7 @@ class MaskRCNNTask(base_task.Task):
 
     return metrics
 
-  def train_step(self,
-                 inputs: Tuple[Any, Any],
-                 model: tf.keras.Model,
-                 optimizer: tf.keras.optimizers.Optimizer,
-                 metrics: Optional[List[Any]] = None):
+  def train_step(self, inputs, model, optimizer, metrics=None):
     """Does forward and backward.
 
     Args:
@@ -304,10 +294,7 @@ class MaskRCNNTask(base_task.Task):
 
     return logs
 
-  def validation_step(self,
-                      inputs: Tuple[Any, Any],
-                      model: tf.keras.Model,
-                      metrics: Optional[List[Any]] = None):
+  def validation_step(self, inputs, model, metrics=None):
     """Validatation step.
 
     Args:

@@ -12,19 +12,19 @@ task:
         model_id: 50
   losses:
     l2_weight_decay: 0.0001
-    one_hot: true
+    one_hot: True
     label_smoothing: 0.1
   train_data:
     input_path: 'imagenet-2012-tfrecord/train*'
-    is_training: true
+    is_training: True
     global_batch_size: 2048
     dtype: 'float16'
   validation_data:
     input_path: 'imagenet-2012-tfrecord/valid*'
-    is_training: false
+    is_training: False
     global_batch_size: 2048
     dtype: 'float16'
-    drop_remainder: false
+    drop_remainder: False
 trainer:
   train_steps: 56160
   validation_steps: 25

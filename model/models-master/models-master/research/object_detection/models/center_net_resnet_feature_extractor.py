@@ -136,9 +136,8 @@ class CenterNetResnetFeatureExtractor(CenterNetFeatureExtractor):
       ValueError('Sub model type "{}" not supported.'.format(sub_model_type))
 
 
-def resnet_v2_101(channel_means, channel_stds, bgr_ordering, **kwargs):
+def resnet_v2_101(channel_means, channel_stds, bgr_ordering):
   """The ResNet v2 101 feature extractor."""
-  del kwargs
 
   return CenterNetResnetFeatureExtractor(
       resnet_type='resnet_v2_101',
@@ -148,9 +147,8 @@ def resnet_v2_101(channel_means, channel_stds, bgr_ordering, **kwargs):
   )
 
 
-def resnet_v2_50(channel_means, channel_stds, bgr_ordering, **kwargs):
+def resnet_v2_50(channel_means, channel_stds, bgr_ordering):
   """The ResNet v2 50 feature extractor."""
-  del kwargs
 
   return CenterNetResnetFeatureExtractor(
       resnet_type='resnet_v2_50',

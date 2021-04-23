@@ -15,44 +15,10 @@
 # Lint as: python3
 """Common configurations."""
 
-from typing import Optional
 # Import libraries
-
 import dataclasses
 
-from official.core import config_definitions as cfg
 from official.modeling import hyperparams
-
-
-@dataclasses.dataclass
-class RandAugment(hyperparams.Config):
-  """Configuration for RandAugment."""
-  num_layers: int = 2
-  magnitude: float = 10
-  cutout_const: float = 40
-  translate_const: float = 10
-
-
-@dataclasses.dataclass
-class AutoAugment(hyperparams.Config):
-  """Configuration for AutoAugment."""
-  augmentation_name: str = 'v0'
-  cutout_const: float = 100
-  translate_const: float = 250
-
-
-@dataclasses.dataclass
-class Augmentation(hyperparams.OneOfConfig):
-  """Configuration for input data augmentation.
-
-  Attributes:
-    type: 'str', type of augmentation be used, one of the fields below.
-    randaug: RandAugment config.
-    autoaug: AutoAugment config.
-  """
-  type: Optional[str] = None
-  randaug: RandAugment = RandAugment()
-  autoaug: AutoAugment = AutoAugment()
 
 
 @dataclasses.dataclass
@@ -64,11 +30,8 @@ class NormActivation(hyperparams.Config):
 
 
 @dataclasses.dataclass
-class PseudoLabelDataConfig(cfg.DataConfig):
+class PseudoLabelDataConfig(hyperparams.Config):
   """Psuedo Label input config for training."""
   input_path: str = ''
-  data_ratio: float = 1.0  # Per-batch ratio of pseudo-labeled to labeled data.
-  aug_rand_hflip: bool = True
-  aug_type: Optional[
-      Augmentation] = None  # Choose from AutoAugment and RandAugment.
+  data_ratio: float = 1.0  # Per-batch ratio of pseudo-labeled to labeled data
   file_type: str = 'tfrecord'

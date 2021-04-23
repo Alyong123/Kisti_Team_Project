@@ -14,7 +14,6 @@
 
 """Contains definitions of ROI aligner."""
 
-from typing import Mapping
 import tensorflow as tf
 
 from official.vision.beta.ops import spatial_transform_ops
@@ -24,7 +23,10 @@ from official.vision.beta.ops import spatial_transform_ops
 class MultilevelROIAligner(tf.keras.layers.Layer):
   """Performs ROIAlign for the second stage processing."""
 
-  def __init__(self, crop_size: int = 7, sample_offset: float = 0.5, **kwargs):
+  def __init__(self,
+               crop_size=7,
+               sample_offset=0.5,
+               **kwargs):
     """Initializes a ROI aligner.
 
     Args:
@@ -38,10 +40,7 @@ class MultilevelROIAligner(tf.keras.layers.Layer):
     }
     super(MultilevelROIAligner, self).__init__(**kwargs)
 
-  def call(self,
-           features: Mapping[str, tf.Tensor],
-           boxes: tf.Tensor,
-           training: bool = None):
+  def call(self, features, boxes, training=None):
     """Generates ROIs.
 
     Args:

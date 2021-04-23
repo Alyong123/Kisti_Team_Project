@@ -13,7 +13,7 @@
 # limitations under the License.
 
 """Build video classification models."""
-from typing import Any, Mapping, Optional, Union
+from typing import Mapping
 import tensorflow as tf
 
 layers = tf.keras.layers
@@ -23,17 +23,16 @@ layers = tf.keras.layers
 class VideoClassificationModel(tf.keras.Model):
   """A video classification class builder."""
 
-  def __init__(
-      self,
-      backbone: tf.keras.Model,
-      num_classes: int,
-      input_specs: Mapping[str, tf.keras.layers.InputSpec] = None,
-      dropout_rate: float = 0.0,
-      aggregate_endpoints: bool = False,
-      kernel_initializer: str = 'random_uniform',
-      kernel_regularizer: Optional[tf.keras.regularizers.Regularizer] = None,
-      bias_regularizer: Optional[tf.keras.regularizers.Regularizer] = None,
-      **kwargs):
+  def __init__(self,
+               backbone: tf.keras.Model,
+               num_classes: int,
+               input_specs: Mapping[str, tf.keras.layers.InputSpec] = None,
+               dropout_rate: float = 0.0,
+               aggregate_endpoints: bool = False,
+               kernel_initializer='random_uniform',
+               kernel_regularizer=None,
+               bias_regularizer=None,
+               **kwargs):
     """Video Classification initialization function.
 
     Args:
@@ -96,16 +95,15 @@ class VideoClassificationModel(tf.keras.Model):
         inputs=inputs, outputs=x, **kwargs)
 
   @property
-  def checkpoint_items(
-      self) -> Mapping[str, Union[tf.keras.Model, tf.keras.layers.Layer]]:
+  def checkpoint_items(self):
     """Returns a dictionary of items to be additionally checkpointed."""
     return dict(backbone=self.backbone)
 
   @property
-  def backbone(self) -> tf.keras.Model:
+  def backbone(self):
     return self._backbone
 
-  def get_config(self) -> Mapping[str, Any]:
+  def get_config(self):
     return self._config_dict
 
   @classmethod

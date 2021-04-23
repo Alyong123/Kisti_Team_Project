@@ -21,7 +21,6 @@ import tensorflow as tf
 import tensorflow_addons.optimizers as tfa_optimizers
 
 from official.modeling.optimization import ema_optimizer
-from official.modeling.optimization import lars_optimizer
 from official.modeling.optimization import lr_schedule
 from official.modeling.optimization.configs import optimization_config as opt_cfg
 from official.nlp import optimization as nlp_optimization
@@ -31,8 +30,7 @@ OPTIMIZERS_CLS = {
     'adam': tf.keras.optimizers.Adam,
     'adamw': nlp_optimization.AdamWeightDecay,
     'lamb': tfa_optimizers.LAMB,
-    'rmsprop': tf.keras.optimizers.RMSprop,
-    'lars': lars_optimizer.LARS,
+    'rmsprop': tf.keras.optimizers.RMSprop
 }
 
 LR_CLS = {

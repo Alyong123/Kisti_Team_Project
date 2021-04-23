@@ -89,18 +89,10 @@ class Losses(hyperparams.Config):
 
 
 @dataclasses.dataclass
-class AttributeHead(hyperparams.Config):
-  name: str = ''
-  type: str = 'regression'
-  size: int = 1
-
-
-@dataclasses.dataclass
 class RetinaNetHead(hyperparams.Config):
   num_convs: int = 4
   num_filters: int = 256
   use_separable_conv: bool = False
-  attribute_heads: Optional[List[AttributeHead]] = None
 
 
 @dataclasses.dataclass

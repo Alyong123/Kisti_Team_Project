@@ -80,7 +80,8 @@ class Task(tf.Module, metaclass=abc.ABCMeta):
       optimizer = performance.configure_optimizer(
           optimizer,
           use_float16=runtime_config.mixed_precision_dtype == "float16",
-          loss_scale=runtime_config.loss_scale)
+          loss_scale=runtime_config.loss_scale,
+          use_experimental_api=True)
 
     return optimizer
 
@@ -216,14 +217,8 @@ class Task(tf.Module, metaclass=abc.ABCMeta):
     with tf.GradientTape() as tape:
       outputs = model(features, training=True)
       # Computes per-replica loss.
-      if model.compiled_loss:
-        loss = model.compiled_loss(
-            labels, outputs, regularization_losses=model.losses)
-        loss += self.build_losses(
-            labels=labels, model_outputs=outputs, aux_losses=None)
-      else:
-        loss = self.build_losses(
-            labels=labels, model_outputs=outputs, aux_losses=model.losses)
+      loss = self.build_losses(
+          labels=labels, model_outputs=outputs, aux_losses=model.losses)
       # Scales loss as the default gradients allreduce performs sum inside the
       # optimizer.
       scaled_loss = loss / tf.distribute.get_strategy().num_replicas_in_sync

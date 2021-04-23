@@ -25,13 +25,12 @@ from official.vision.beta.modeling.layers import nn_blocks_3d
 class NNBlocksTest(parameterized.TestCase, tf.test.TestCase):
 
   @parameterized.parameters(
-      (nn_blocks_3d.BottleneckBlock3D, 1, 1, 2, True, 0.2, 0.1),
-      (nn_blocks_3d.BottleneckBlock3D, 3, 2, 1, False, 0.0, 0.0),
+      (nn_blocks_3d.BottleneckBlock3D, 1, 1, 2, True),
+      (nn_blocks_3d.BottleneckBlock3D, 3, 2, 1, False),
   )
   def test_bottleneck_block_creation(self, block_fn, temporal_kernel_size,
                                      temporal_strides, spatial_strides,
-                                     use_self_gating, se_ratio,
-                                     stochastic_depth):
+                                     use_self_gating):
     temporal_size = 16
     spatial_size = 128
     filters = 256
@@ -43,9 +42,7 @@ class NNBlocksTest(parameterized.TestCase, tf.test.TestCase):
         temporal_kernel_size=temporal_kernel_size,
         temporal_strides=temporal_strides,
         spatial_strides=spatial_strides,
-        use_self_gating=use_self_gating,
-        se_ratio=se_ratio,
-        stochastic_depth_drop_rate=stochastic_depth)
+        use_self_gating=use_self_gating)
 
     features = block(inputs)
 

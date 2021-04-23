@@ -112,8 +112,8 @@ class Parser(parser.Parser):
     self._use_autoaugment = use_autoaugment
     self._autoaugment_policy_name = autoaugment_policy_name
 
-    # Data type.
-    self._dtype = dtype
+    # Device.
+    self._use_bfloat16 = True if dtype == 'bfloat16' else False
 
   def _parse_train_data(self, data):
     """Parses data for training and evaluation."""
@@ -180,8 +180,9 @@ class Parser(parser.Parser):
      box_weights) = anchor_labeler.label_anchors(
          anchor_boxes, boxes, tf.expand_dims(classes, axis=1))
 
-    # Casts input image to desired data type.
-    image = tf.cast(image, dtype=self._dtype)
+    # If bfloat16 is used, casts input image to tf.bfloat16.
+    if self._use_bfloat16:
+      image = tf.cast(image, dtype=tf.bfloat16)
 
     # Packs labels for model_fn outputs.
     labels = {
@@ -244,8 +245,9 @@ class Parser(parser.Parser):
      box_weights) = anchor_labeler.label_anchors(
          anchor_boxes, boxes, tf.expand_dims(classes, axis=1))
 
-    # Casts input image to desired data type.
-    image = tf.cast(image, dtype=self._dtype)
+    # If bfloat16 is used, casts input image to tf.bfloat16.
+    if self._use_bfloat16:
+      image = tf.cast(image, dtype=tf.bfloat16)
 
     # Sets up groundtruth data for evaluation.
     groundtruths = {

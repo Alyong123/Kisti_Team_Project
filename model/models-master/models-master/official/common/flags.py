@@ -25,14 +25,10 @@ def define_flags():
   flags.DEFINE_enum(
       'mode',
       default=None,
-      enum_values=[
-          'train', 'eval', 'train_and_eval', 'continuous_eval',
-          'continuous_train_and_eval', 'train_and_validate'
-      ],
+      enum_values=['train', 'eval', 'train_and_eval',
+                   'continuous_eval', 'continuous_train_and_eval'],
       help='Mode to run: `train`, `eval`, `train_and_eval`, '
-      '`continuous_eval`, `continuous_train_and_eval` and '
-      '`train_and_validate` (which is not implemented in '
-      'the open source version).')
+      '`continuous_eval`, and `continuous_train_and_eval`.')
 
   flags.DEFINE_string(
       'model_dir',
@@ -82,8 +78,7 @@ def define_flags():
     pass
 
   flags.DEFINE_string(
-      'tpu',
-      default=None,
+      'tpu', default=None,
       help='The Cloud TPU to use for training. This should be either the name '
       'used when creating the Cloud TPU, or a grpc://ip.address.of.tpu:8470 '
       'url.')

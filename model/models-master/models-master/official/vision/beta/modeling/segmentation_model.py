@@ -13,7 +13,6 @@
 # limitations under the License.
 
 """Build segmentation models."""
-from typing import Any, Mapping, Union
 
 # Import libraries
 import tensorflow as tf
@@ -34,8 +33,11 @@ class SegmentationModel(tf.keras.Model):
   different backbones, and decoders.
   """
 
-  def __init__(self, backbone: tf.keras.Model, decoder: tf.keras.Model,
-               head: tf.keras.layers.Layer, **kwargs):
+  def __init__(self,
+               backbone,
+               decoder,
+               head,
+               **kwargs):
     """Segmentation initialization function.
 
     Args:
@@ -54,7 +56,7 @@ class SegmentationModel(tf.keras.Model):
     self.decoder = decoder
     self.head = head
 
-  def call(self, inputs: tf.Tensor, training: bool = None) -> tf.Tensor:
+  def call(self, inputs, training=None):
     backbone_features = self.backbone(inputs)
 
     if self.decoder:
@@ -65,15 +67,14 @@ class SegmentationModel(tf.keras.Model):
     return self.head(backbone_features, decoder_features)
 
   @property
-  def checkpoint_items(
-      self) -> Mapping[str, Union[tf.keras.Model, tf.keras.layers.Layer]]:
+  def checkpoint_items(self):
     """Returns a dictionary of items to be additionally checkpointed."""
     items = dict(backbone=self.backbone, head=self.head)
     if self.decoder is not None:
       items.update(decoder=self.decoder)
     return items
 
-  def get_config(self) -> Mapping[str, Any]:
+  def get_config(self):
     return self._config_dict
 
   @classmethod

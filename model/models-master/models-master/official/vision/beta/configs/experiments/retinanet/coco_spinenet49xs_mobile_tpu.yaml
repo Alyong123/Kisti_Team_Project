@@ -1,4 +1,3 @@
-# --experiment_type=retinanet_spinenet_mobile_coco
 runtime:
   distribution_strategy: 'tpu'
   mixed_precision_dtype: 'bfloat16'
@@ -37,7 +36,7 @@ task:
     parser:
       aug_rand_hflip: true
       aug_scale_max: 2.0
-      aug_scale_min: 0.5
+      aug_scale_min: 0.1
   validation_data:
     dtype: 'bfloat16'
     global_batch_size: 8

@@ -18,6 +18,7 @@ import numpy as np
 import tensorflow.compat.v1 as tf
 
 from object_detection.models import center_net_mobilenet_v2_fpn_feature_extractor
+from object_detection.models.keras_models import mobilenet_v2
 from object_detection.utils import test_case
 from object_detection.utils import tf_version
 
@@ -27,13 +28,10 @@ class CenterNetMobileNetV2FPNFeatureExtractorTest(test_case.TestCase):
 
   def test_center_net_mobilenet_v2_fpn_feature_extractor(self):
 
-    channel_means = (0., 0., 0.)
-    channel_stds = (1., 1., 1.)
-    bgr_ordering = False
-    model = (
-        center_net_mobilenet_v2_fpn_feature_extractor.mobilenet_v2_fpn(
-            channel_means, channel_stds, bgr_ordering,
-            use_separable_conv=False))
+    net = mobilenet_v2.mobilenet_v2(True, include_top=False)
+
+    model = center_net_mobilenet_v2_fpn_feature_extractor.CenterNetMobileNetV2FPNFeatureExtractor(
+        net)
 
     def graph_fn():
       img = np.zeros((8, 224, 224, 3), dtype=np.float32)
@@ -52,12 +50,10 @@ class CenterNetMobileNetV2FPNFeatureExtractorTest(test_case.TestCase):
 
   def test_center_net_mobilenet_v2_fpn_feature_extractor_sep_conv(self):
 
-    channel_means = (0., 0., 0.)
-    channel_stds = (1., 1., 1.)
-    bgr_ordering = False
-    model = (
-        center_net_mobilenet_v2_fpn_feature_extractor.mobilenet_v2_fpn(
-            channel_means, channel_stds, bgr_ordering, use_separable_conv=True))
+    net = mobilenet_v2.mobilenet_v2(True, include_top=False)
+
+    model = center_net_mobilenet_v2_fpn_feature_extractor.CenterNetMobileNetV2FPNFeatureExtractor(
+        net, fpn_separable_conv=True)
 
     def graph_fn():
       img = np.zeros((8, 224, 224, 3), dtype=np.float32)
@@ -66,10 +62,6 @@ class CenterNetMobileNetV2FPNFeatureExtractorTest(test_case.TestCase):
 
     outputs = self.execute(graph_fn, [])
     self.assertEqual(outputs.shape, (8, 56, 56, 24))
-    # Pull out the FPN network.
-    backbone = model.get_layer('model')
-    first_conv = backbone.get_layer('Conv1')
-    self.assertEqual(32, first_conv.filters)
 
     # Pull out the FPN network.
     output = model.get_layer('model_1')
@@ -78,30 +70,6 @@ class CenterNetMobileNetV2FPNFeatureExtractorTest(test_case.TestCase):
       # separable 2D convolutions.
       if 'conv' in layer.name and layer.kernel_size != (1, 1):
         self.assertIsInstance(layer, tf.keras.layers.SeparableConv2D)
-
-  def test_center_net_mobilenet_v2_fpn_feature_extractor_depth_multiplier(self):
-
-    channel_means = (0., 0., 0.)
-    channel_stds = (1., 1., 1.)
-    bgr_ordering = False
-    model = (
-        center_net_mobilenet_v2_fpn_feature_extractor.mobilenet_v2_fpn(
-            channel_means, channel_stds, bgr_ordering, use_separable_conv=True,
-            depth_multiplier=2.0))
-
-    def graph_fn():
-      img = np.zeros((8, 224, 224, 3), dtype=np.float32)
-      processed_img = model.preprocess(img)
-      return model(processed_img)
-
-    outputs = self.execute(graph_fn, [])
-    self.assertEqual(outputs.shape, (8, 56, 56, 24))
-    # Pull out the FPN network.
-    backbone = model.get_layer('model')
-    first_conv = backbone.get_layer('Conv1')
-    # Note that the first layer typically has 32 filters, but this model has
-    # a depth multiplier of 2.
-    self.assertEqual(64, first_conv.filters)
 
 
 if __name__ == '__main__':

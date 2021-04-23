@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Lint as: python3
 """Image segmentation task definition."""
-from typing import Any, Optional, List, Tuple, Mapping, Union
 
 from absl import logging
 import tensorflow as tf
@@ -79,9 +79,7 @@ class SemanticSegmentationTask(base_task.Task):
     logging.info('Finished loading pretrained checkpoint from %s',
                  ckpt_dir_or_file)
 
-  def build_inputs(self,
-                   params: exp_cfg.DataConfig,
-                   input_context: Optional[tf.distribute.InputContext] = None):
+  def build_inputs(self, params, input_context=None):
     """Builds classification input."""
 
     ignore_label = self.task_config.losses.ignore_label
@@ -97,7 +95,7 @@ class SemanticSegmentationTask(base_task.Task):
 
     parser = segmentation_input.Parser(
         output_size=params.output_size,
-        crop_size=params.crop_size,
+        train_on_crops=params.train_on_crops,
         ignore_label=ignore_label,
         resize_eval_groundtruth=params.resize_eval_groundtruth,
         groundtruth_padded_size=params.groundtruth_padded_size,
@@ -116,10 +114,7 @@ class SemanticSegmentationTask(base_task.Task):
 
     return dataset
 
-  def build_losses(self,
-                   labels: Mapping[str, tf.Tensor],
-                   model_outputs: Union[Mapping[str, tf.Tensor], tf.Tensor],
-                   aux_losses: Optional[Any] = None):
+  def build_losses(self, labels, model_outputs, aux_losses=None):
     """Segmentation loss.
 
     Args:
@@ -145,7 +140,7 @@ class SemanticSegmentationTask(base_task.Task):
 
     return total_loss
 
-  def build_metrics(self, training: bool = True):
+  def build_metrics(self, training=True):
     """Gets streaming metrics for training/validation."""
     metrics = []
     if training and self.task_config.evaluation.report_train_mean_iou:
@@ -164,11 +159,7 @@ class SemanticSegmentationTask(base_task.Task):
 
     return metrics
 
-  def train_step(self,
-                 inputs: Tuple[Any, Any],
-                 model: tf.keras.Model,
-                 optimizer: tf.keras.optimizers.Optimizer,
-                 metrics: Optional[List[Any]] = None):
+  def train_step(self, inputs, model, optimizer, metrics=None):
     """Does forward and backward.
 
     Args:
@@ -223,10 +214,7 @@ class SemanticSegmentationTask(base_task.Task):
 
     return logs
 
-  def validation_step(self,
-                      inputs: Tuple[Any, Any],
-                      model: tf.keras.Model,
-                      metrics: Optional[List[Any]] = None):
+  def validation_step(self, inputs, model, metrics=None):
     """Validatation step.
 
     Args:
@@ -263,7 +251,7 @@ class SemanticSegmentationTask(base_task.Task):
 
     return logs
 
-  def inference_step(self, inputs: tf.Tensor, model: tf.keras.Model):
+  def inference_step(self, inputs, model):
     """Performs the forward step."""
     return model(inputs, training=False)
 

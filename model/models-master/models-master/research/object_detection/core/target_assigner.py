@@ -812,20 +812,7 @@ def get_batch_predictions_from_indices(batch_predictions, indices):
     values: A tensor of shape [num_instances, channels] holding the predicted
       values at the given indices.
   """
-  # Note, gather_nd (and its gradient scatter_nd) runs significantly slower (on
-  # TPU) than gather with flattened inputs, so reshape the tensor, flatten the
-  # indices, and run gather.
-  shape = shape_utils.combined_static_and_dynamic_shape(batch_predictions)
-
-  # [B, H, W, C] -> [H*W, W, 1] or [B, H, W, N, C] -> [H*W*N, W*N, N, 1]
-  rev_cum_interior_indices = tf.reverse(tf.math.cumprod(shape[-2:0:-1]), [0])
-  rev_cum_interior_indices = tf.concat([rev_cum_interior_indices, [1]], axis=0)
-
-  # Compute flattened indices and gather.
-  flattened_inds = tf.linalg.matmul(
-      indices, rev_cum_interior_indices[:, tf.newaxis])[:, 0]
-  batch_predictions_2d = tf.reshape(batch_predictions, [-1, shape[-1]])
-  return tf.gather(batch_predictions_2d, flattened_inds, axis=0)
+  return tf.gather_nd(batch_predictions, indices)
 
 
 def _compute_std_dev_from_box_size(boxes_height, boxes_width, min_overlap):
@@ -1318,8 +1305,7 @@ class CenterNetKeypointTargetAssigner(object):
                keypoint_std_dev=None,
                per_keypoint_offset=False,
                peak_radius=0,
-               compute_heatmap_sparse=False,
-               per_keypoint_depth=False):
+               compute_heatmap_sparse=False):
     """Initializes a CenterNet keypoints target assigner.
 
     Args:
@@ -1350,16 +1336,12 @@ class CenterNetKeypointTargetAssigner(object):
         version of the Op that computes the heatmap. The sparse version scales
         better with number of keypoint types, but in some cases is known to
         cause an OOM error. See (b/170989061).
-      per_keypoint_depth: A bool indicates whether the model predicts the depth
-        of each keypoints in independent channels. Similar to
-        per_keypoint_offset but for the keypoint depth.
     """
 
     self._stride = stride
     self._class_id = class_id
     self._keypoint_indices = keypoint_indices
     self._per_keypoint_offset = per_keypoint_offset
-    self._per_keypoint_depth = per_keypoint_depth
     self._peak_radius = peak_radius
     self._compute_heatmap_sparse = compute_heatmap_sparse
     if keypoint_std_dev is None:
@@ -1691,15 +1673,14 @@ class CenterNetKeypointTargetAssigner(object):
 
     Returns:
       batch_indices: an integer tensor of shape [num_total_instances, 3] (or
-        [num_total_instances, 4] if 'per_keypoint_depth' is set True) holding
+        [num_total_instances, 4] if 'per_keypoint_offset' is set True) holding
         the indices inside the predicted tensor which should be penalized. The
         first column indicates the index along the batch dimension and the
         second and third columns indicate the index along the y and x
         dimensions respectively. The fourth column corresponds to the channel
         dimension (if 'per_keypoint_offset' is set True).
-      batch_depths: a float tensor of shape [num_total_instances, 1] (or
-        [num_total_instances, num_keypoints] if per_keypoint_depth is set True)
-        indicating the target depth of each keypoint.
+      batch_depths: a float tensor of shape [num_total_instances, 1] indicating
+        the target depth of each keypoint.
       batch_weights: a float tensor of shape [num_total_instances] indicating
         the weight of each prediction.
       Note that num_total_instances = batch_size * num_instances *
@@ -1806,7 +1787,7 @@ class CenterNetKeypointTargetAssigner(object):
       # Prepare the batch indices to be prepended.
       batch_index = tf.fill(
           [num_instances * num_keypoints * num_neighbors, 1], i)
-      if self._per_keypoint_depth:
+      if self._per_keypoint_offset:
         tiled_keypoint_types = self._get_keypoint_types(
             num_instances, num_keypoints, num_neighbors)
         batch_indices.append(

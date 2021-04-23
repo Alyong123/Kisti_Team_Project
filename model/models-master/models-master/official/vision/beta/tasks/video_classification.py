@@ -12,9 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Lint as: python3
 """Video classification task definition."""
-from typing import Any, Optional, List, Tuple
-
 from absl import logging
 import tensorflow as tf
 from official.core import base_task
@@ -69,9 +68,7 @@ class VideoClassificationTask(base_task.Task):
                           tf.io.VarLenFeature(dtype=tf.float32))
     return decoder.decode
 
-  def build_inputs(self,
-                   params: exp_cfg.DataConfig,
-                   input_context: Optional[tf.distribute.InputContext] = None):
+  def build_inputs(self, params: exp_cfg.DataConfig, input_context=None):
     """Builds classification input."""
 
     parser = video_input.Parser(input_params=params)
@@ -88,10 +85,7 @@ class VideoClassificationTask(base_task.Task):
 
     return dataset
 
-  def build_losses(self,
-                   labels: Any,
-                   model_outputs: Any,
-                   aux_losses: Optional[Any] = None):
+  def build_losses(self, labels, model_outputs, aux_losses=None):
     """Sparse categorical cross entropy loss.
 
     Args:
@@ -138,7 +132,7 @@ class VideoClassificationTask(base_task.Task):
 
     return all_losses
 
-  def build_metrics(self, training: bool = True):
+  def build_metrics(self, training=True):
     """Gets streaming metrics for training/validation."""
     if self.task_config.losses.one_hot:
       metrics = [
@@ -160,10 +154,6 @@ class VideoClassificationTask(base_task.Task):
                 curve='PR',
                 multi_label=self.task_config.train_data.is_multilabel,
                 name='PR-AUC'))
-        if self.task_config.metrics.use_per_class_recall:
-          for i in range(self.task_config.train_data.num_classes):
-            metrics.append(
-                tf.keras.metrics.Recall(class_id=i, name=f'recall-{i}'))
     else:
       metrics = [
           tf.keras.metrics.SparseCategoricalAccuracy(name='accuracy'),
@@ -174,8 +164,7 @@ class VideoClassificationTask(base_task.Task):
       ]
     return metrics
 
-  def process_metrics(self, metrics: List[Any], labels: Any,
-                      model_outputs: Any):
+  def process_metrics(self, metrics, labels, model_outputs):
     """Process and update metrics.
 
     Called when using custom training loop API.
@@ -190,11 +179,7 @@ class VideoClassificationTask(base_task.Task):
     for metric in metrics:
       metric.update_state(labels, model_outputs)
 
-  def train_step(self,
-                 inputs: Tuple[Any, Any],
-                 model: tf.keras.Model,
-                 optimizer: tf.keras.optimizers.Optimizer,
-                 metrics: Optional[List[Any]] = None):
+  def train_step(self, inputs, model, optimizer, metrics=None):
     """Does forward and backward.
 
     Args:
@@ -251,10 +236,7 @@ class VideoClassificationTask(base_task.Task):
       logs.update({m.name: m.result() for m in model.metrics})
     return logs
 
-  def validation_step(self,
-                      inputs: Tuple[Any, Any],
-                      model: tf.keras.Model,
-                      metrics: Optional[List[Any]] = None):
+  def validation_step(self, inputs, model, metrics=None):
     """Validatation step.
 
     Args:
@@ -280,7 +262,7 @@ class VideoClassificationTask(base_task.Task):
       logs.update({m.name: m.result() for m in model.metrics})
     return logs
 
-  def inference_step(self, features: tf.Tensor, model: tf.keras.Model):
+  def inference_step(self, features, model):
     """Performs the forward step."""
     outputs = model(features, training=False)
     if self.task_config.train_data.is_multilabel:

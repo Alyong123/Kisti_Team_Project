@@ -26,12 +26,12 @@ from official.vision.beta.modeling.layers import nn_blocks
 from official.vision.beta.modeling.layers import nn_layers
 
 layers = tf.keras.layers
+regularizers = tf.keras.regularizers
 
 
 #  pylint: disable=pointless-string-statement
 
 
-@tf.keras.utils.register_keras_serializable(package='Vision')
 class Conv2DBNBlock(tf.keras.layers.Layer):
   """A convolution block with batch normalization."""
 
@@ -95,6 +95,7 @@ class Conv2DBNBlock(tf.keras.layers.Layer):
       self._bn_axis = -1
     else:
       self._bn_axis = 1
+    self._activation_fn = tf_utils.get_activation(activation)
 
   def get_config(self):
     config = {
@@ -129,8 +130,6 @@ class Conv2DBNBlock(tf.keras.layers.Layer):
           axis=self._bn_axis,
           momentum=self._norm_momentum,
           epsilon=self._norm_epsilon)
-    self._activation_layer = tf_utils.get_activation(
-        self._activation, use_keras_layer=True)
 
     super(Conv2DBNBlock, self).build(input_shape)
 
@@ -138,7 +137,7 @@ class Conv2DBNBlock(tf.keras.layers.Layer):
     x = self._conv0(inputs)
     if self._use_normalization:
       x = self._norm0(x)
-    return self._activation_layer(x)
+    return self._activation_fn(x)
 
 """
 Architecture: https://arxiv.org/abs/1704.04861.
@@ -418,21 +417,20 @@ class BlockSpec(hyperparams.Config):
   use_bias: bool = False
   use_normalization: bool = True
   activation: str = 'relu6'
-  # Used for block type InvertedResConv.
+  # used for block type InvertedResConv
   expand_ratio: Optional[float] = 6.
-  # Used for block type InvertedResConv with SE.
+  # used for block type InvertedResConv with SE
   se_ratio: Optional[float] = None
   use_depthwise: bool = True
   use_residual: bool = True
   is_output: bool = True
 
 
-def block_spec_decoder(
-    specs: Dict[Any, Any],
-    filter_size_scale: float,
-    # Set to 1 for mobilenetv1.
-    divisible_by: int = 8,
-    finegrain_classification_mode: bool = True):
+def block_spec_decoder(specs: Dict[Any, Any],
+                       filter_size_scale: float,
+                       # set to 1 for mobilenetv1
+                       divisible_by: int = 8,
+                       finegrain_classification_mode: bool = True):
   """Decodes specs for a block.
 
   Args:
@@ -473,7 +471,7 @@ def block_spec_decoder(
   if (spec_name != 'MobileNetV1'
       and finegrain_classification_mode
       and filter_size_scale < 1.0):
-    decoded_specs[-1].filters /= filter_size_scale  # pytype: disable=annotation-type-mismatch
+    decoded_specs[-1].filters /= filter_size_scale
 
   for ds in decoded_specs:
     if ds.filters:
@@ -493,23 +491,23 @@ class MobileNet(tf.keras.Model):
       self,
       model_id: str = 'MobileNetV2',
       filter_size_scale: float = 1.0,
-      input_specs: tf.keras.layers.InputSpec = layers.InputSpec(
+      input_specs: layers.InputSpec = layers.InputSpec(
           shape=[None, None, None, 3]),
-      # The followings are for hyper-parameter tuning.
+      # The followings are for hyper-parameter tuning
       norm_momentum: float = 0.99,
       norm_epsilon: float = 0.001,
       kernel_initializer: str = 'VarianceScaling',
-      kernel_regularizer: Optional[tf.keras.regularizers.Regularizer] = None,
-      bias_regularizer: Optional[tf.keras.regularizers.Regularizer] = None,
-      # The followings should be kept the same most of the times.
+      kernel_regularizer: Optional[regularizers.Regularizer] = None,
+      bias_regularizer: Optional[regularizers.Regularizer] = None,
+      # The followings should be kept the same most of the times
       output_stride: int = None,
       min_depth: int = 8,
-      # divisible is not used in MobileNetV1.
+      # divisible is not used in MobileNetV1
       divisible_by: int = 8,
       stochastic_depth_drop_rate: float = 0.0,
       regularize_depthwise: bool = False,
       use_sync_bn: bool = False,
-      # finegrain is not used in MobileNetV1.
+      # finegrain is not used in MobileNetV1
       finegrain_classification_mode: bool = True,
       **kwargs):
     """Initializes a MobileNet model.
@@ -638,8 +636,8 @@ class MobileNet(tf.keras.Model):
       # A small catch for gpooling block with None strides
       if not block_def.strides:
         block_def.strides = 1
-      if (self._output_stride is not None and
-          current_stride == self._output_stride):
+      if self._output_stride is not None \
+          and current_stride == self._output_stride:
         # If we have reached the target output_stride, then we need to employ
         # atrous convolution with stride=1 and multiply the atrous rate by the
         # current unit's stride for use in subsequent layers.
@@ -726,7 +724,7 @@ class MobileNet(tf.keras.Model):
         raise ValueError('Unknown block type {} for layer {}'.format(
             block_def.block_fn, i))
 
-      net = tf.keras.layers.Activation('linear', name=block_name)(net)
+      net = tf.identity(net, name=block_name)
 
       if block_def.is_output:
         endpoints[str(endpoint_level)] = net
@@ -766,7 +764,7 @@ class MobileNet(tf.keras.Model):
 @factory.register_backbone_builder('mobilenet')
 def build_mobilenet(
     input_specs: tf.keras.layers.InputSpec,
-    model_config: hyperparams.Config,
+    model_config,
     l2_regularizer: tf.keras.regularizers.Regularizer = None) -> tf.keras.Model:
   """Builds MobileNet backbone from a config."""
   backbone_type = model_config.backbone.type

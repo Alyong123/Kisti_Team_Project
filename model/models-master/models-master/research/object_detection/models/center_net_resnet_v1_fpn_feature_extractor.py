@@ -172,9 +172,8 @@ class CenterNetResnetV1FpnFeatureExtractor(CenterNetFeatureExtractor):
       ValueError('Sub model type "{}" not supported.'.format(sub_model_type))
 
 
-def resnet_v1_101_fpn(channel_means, channel_stds, bgr_ordering, **kwargs):
+def resnet_v1_101_fpn(channel_means, channel_stds, bgr_ordering):
   """The ResNet v1 101 FPN feature extractor."""
-  del kwargs
 
   return CenterNetResnetV1FpnFeatureExtractor(
       resnet_type='resnet_v1_101',
@@ -184,9 +183,8 @@ def resnet_v1_101_fpn(channel_means, channel_stds, bgr_ordering, **kwargs):
   )
 
 
-def resnet_v1_50_fpn(channel_means, channel_stds, bgr_ordering, **kwargs):
+def resnet_v1_50_fpn(channel_means, channel_stds, bgr_ordering):
   """The ResNet v1 50 FPN feature extractor."""
-  del kwargs
 
   return CenterNetResnetV1FpnFeatureExtractor(
       resnet_type='resnet_v1_50',
@@ -195,9 +193,8 @@ def resnet_v1_50_fpn(channel_means, channel_stds, bgr_ordering, **kwargs):
       bgr_ordering=bgr_ordering)
 
 
-def resnet_v1_34_fpn(channel_means, channel_stds, bgr_ordering, **kwargs):
+def resnet_v1_34_fpn(channel_means, channel_stds, bgr_ordering):
   """The ResNet v1 34 FPN feature extractor."""
-  del kwargs
 
   return CenterNetResnetV1FpnFeatureExtractor(
       resnet_type='resnet_v1_34',
@@ -207,9 +204,8 @@ def resnet_v1_34_fpn(channel_means, channel_stds, bgr_ordering, **kwargs):
   )
 
 
-def resnet_v1_18_fpn(channel_means, channel_stds, bgr_ordering, **kwargs):
+def resnet_v1_18_fpn(channel_means, channel_stds, bgr_ordering):
   """The ResNet v1 18 FPN feature extractor."""
-  del kwargs
 
   return CenterNetResnetV1FpnFeatureExtractor(
       resnet_type='resnet_v1_18',

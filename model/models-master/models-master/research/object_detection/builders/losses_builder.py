@@ -204,9 +204,6 @@ def _build_localization_loss(loss_config):
   if loss_type == 'l1_localization_loss':
     return losses.L1LocalizationLoss()
 
-  if loss_type == 'weighted_giou':
-    return losses.WeightedGIOULocalizationLoss()
-
   raise ValueError('Empty loss config.')
 
 

@@ -15,21 +15,15 @@
 # Lint as: python3
 """Contains the factory method to create decoders."""
 
-from typing import Mapping, Optional
-
 # Import libraries
-
 import tensorflow as tf
 
-from official.modeling import hyperparams
 from official.vision.beta.modeling import decoders
 
 
-def build_decoder(
-    input_specs: Mapping[str, tf.TensorShape],
-    model_config: hyperparams.Config,
-    l2_regularizer: Optional[tf.keras.regularizers.Regularizer] = None
-) -> tf.keras.Model:
+def build_decoder(input_specs,
+                  model_config,
+                  l2_regularizer: tf.keras.regularizers.Regularizer = None):
   """Builds decoder from a config.
 
   Args:

@@ -73,9 +73,8 @@ class CenterNetHourglassFeatureExtractor(
       ValueError('Sub model type "{}" not supported.'.format(sub_model_type))
 
 
-def hourglass_10(channel_means, channel_stds, bgr_ordering, **kwargs):
+def hourglass_10(channel_means, channel_stds, bgr_ordering):
   """The Hourglass-10 backbone for CenterNet."""
-  del kwargs
 
   network = hourglass_network.hourglass_10(num_channels=32)
   return CenterNetHourglassFeatureExtractor(
@@ -83,9 +82,8 @@ def hourglass_10(channel_means, channel_stds, bgr_ordering, **kwargs):
       bgr_ordering=bgr_ordering)
 
 
-def hourglass_20(channel_means, channel_stds, bgr_ordering, **kwargs):
+def hourglass_20(channel_means, channel_stds, bgr_ordering):
   """The Hourglass-20 backbone for CenterNet."""
-  del kwargs
 
   network = hourglass_network.hourglass_20(num_channels=48)
   return CenterNetHourglassFeatureExtractor(
@@ -93,9 +91,8 @@ def hourglass_20(channel_means, channel_stds, bgr_ordering, **kwargs):
       bgr_ordering=bgr_ordering)
 
 
-def hourglass_32(channel_means, channel_stds, bgr_ordering, **kwargs):
+def hourglass_32(channel_means, channel_stds, bgr_ordering):
   """The Hourglass-32 backbone for CenterNet."""
-  del kwargs
 
   network = hourglass_network.hourglass_32(num_channels=48)
   return CenterNetHourglassFeatureExtractor(
@@ -103,9 +100,8 @@ def hourglass_32(channel_means, channel_stds, bgr_ordering, **kwargs):
       bgr_ordering=bgr_ordering)
 
 
-def hourglass_52(channel_means, channel_stds, bgr_ordering, **kwargs):
+def hourglass_52(channel_means, channel_stds, bgr_ordering):
   """The Hourglass-52 backbone for CenterNet."""
-  del kwargs
 
   network = hourglass_network.hourglass_52(num_channels=64)
   return CenterNetHourglassFeatureExtractor(
@@ -113,9 +109,8 @@ def hourglass_52(channel_means, channel_stds, bgr_ordering, **kwargs):
       bgr_ordering=bgr_ordering)
 
 
-def hourglass_104(channel_means, channel_stds, bgr_ordering, **kwargs):
+def hourglass_104(channel_means, channel_stds, bgr_ordering):
   """The Hourglass-104 backbone for CenterNet."""
-  del kwargs
 
   # TODO(vighneshb): update hourglass_104 signature to match with other
   # hourglass networks.

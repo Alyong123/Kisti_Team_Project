@@ -24,7 +24,7 @@
 <br>
 
 ### image data
-* 학습에 사용된 이미지는 횡단보도, 신호등이 같이 존재 하는 장소 사진이며 **[중국 Data](https://dl.orangedox.com/9ZvH36)** 과 직접 촬영을 통해 수집하여 만든 **한국 Data**을 사용하였다
+* 학습에 사용된 이미지는 횡단보도, 신호등이 같이 존재 하는 장소 사진이며 **[중국 data](https://dl.orangedox.com/9ZvH36)** 과 직접 촬영을 통해 수집하여 만든 **한국 data**을 사용하였다
 
 ![화면 캡처 2021-04-23 143723](https://user-images.githubusercontent.com/68493312/115823897-1e6a1e80-a442-11eb-96ce-c0fcd3a522f2.png)
 

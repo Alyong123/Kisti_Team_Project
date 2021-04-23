@@ -1,0 +1,19 @@
+item {
+  id: 1
+  name: 'Crosswalk'
+}
+
+item {
+  id: 2
+  name: 'Traffic_Light_Green'
+}
+
+item {
+  id: 3
+  name: 'Traffic_Light_Red'
+}
+
+item {
+  id: 4
+  name: 'Car'
+}

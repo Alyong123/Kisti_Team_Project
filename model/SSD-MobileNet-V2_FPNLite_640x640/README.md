@@ -4,12 +4,12 @@ object detection api의 설치가 완료되었다면 이제 학습을 위해 COC
 
 ### pipeline.config 는 모델 구조와 하이퍼 파라미터, 학습과 관련된 설정 파일로 기본적으로 알아야 할 설정들은 다음과 같다.
 * num_classes: 탐지하고자 하는 class의 수
-* batch_size: 배치 사이즈 / 클수록 더 큰 GPU 메모리 혹은 메모리가 필요함.
+* batch_size: 배치 사이즈 / 클수록 더 큰 GPU 메모리 혹은 메모리가 필요
 * num_steps: 한 미니배치를 학습하는 총 스텝 수
-* fine_tune_checkpoint_type: 사용하고자 하는 모델의 타입 / “classification”과 “detection”, “full”이 있음.			   입력되는 것에 따라 pre_trained된 모델 가중치를 load하는 부분이 달라짐.			  
- - “classification“ : backbone 부분의 가중치를 불러옵니다.			  
- - ”detection“ : backbone + neck 부분의 가중치를 불러옵니다.			  
- -  ”full“ : backbone + neck + head 전체 모델의 가중치를 불러옵니다.
+* fine_tune_checkpoint_type: 사용하고자 하는 모델의 타입 / “classification”과 “detection”, “full”이 있음. 입력되는 것에 따라 pre_trained된 모델 가중치를 load하는 부분이 달라진다.			  
+ - “classification“ : backbone 부분의 가중치를 불러온다.			  
+ - ”detection“ : backbone + neck 부분의 가중치를 불러온다			  
+ -  ”full“ : backbone + neck + head 전체 모델의 가중치를 불러온다.
 
 <br>
 

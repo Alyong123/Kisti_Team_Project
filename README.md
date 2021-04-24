@@ -86,4 +86,4 @@ class는 탐지하고자 하는 객체로 다음과 같이 라벨링 하였다.
 
 <br>
 
-### 프로젝트에 관한 더 자세한 사항은 [TeamProject.pdf 참조](./TeamProject.pdf)
+### 프로젝트에 관한 더 자세한 설명은 [TeamProject.pdf 참조](./TeamProject.pdf)

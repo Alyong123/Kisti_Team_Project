@@ -4,7 +4,7 @@
 * 해당 .py는 csv 파일만 지원하며 ,csv 파일 내에 첫 행으로 header가 존재해야 한다.
 * `class / xmin / xmax / ymin / ymax / filename /width / height `가 파일의 `첫 행 header`로 존재해야 하며,해당하는` row에 각 header들을 추가`
 
-예시: [Crosswalk, 24, 367, 756, 466, john_IMG_0680.jpg, 768, 576]
+예시: **[Crosswalk, 24, 367, 756, 466, john_IMG_0680.jpg, 768, 576]**
 
 * 존재한다면 위와 같이 맞추어 header를 바꿔라
 * 이미지의 width / height는 존재하지 않아도 되지만, `annotation된 box의 좌표는 min / max 형식`이어야 한다.

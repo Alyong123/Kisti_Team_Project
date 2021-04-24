@@ -84,5 +84,5 @@ class는 탐지하고자 하는 객체로 다음과 같이 라벨링 하였다.
 
 ![화면 캡처 2021-04-22 003126](https://user-images.githubusercontent.com/68493312/115580509-1b681480-a302-11eb-9db8-7648cbf108e1.png)
 
-
+<br>
 #### 프로젝트에 관한 더 자세한 사항은[TeamProject.pdf 참조](./TeamProject.pdf)

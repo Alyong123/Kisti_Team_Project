@@ -82,7 +82,7 @@ class는 탐지하고자 하는 객체로 다음과 같이 라벨링 하였다.
 
 #### 상황 별 음성안내
 
-![화면 캡처 2021-04-22 003126](https://user-images.githubusercontent.com/68493312/115580509-1b681480-a302-11eb-9db8-7648cbf108e1.png)
+![화면 캡처 2021-04-24 175719](https://user-images.githubusercontent.com/68493312/115953465-b04b5780-a526-11eb-9f9a-feaa42cdcbcd.png)
 
 <br>
 

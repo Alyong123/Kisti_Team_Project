@@ -5,6 +5,8 @@
 * Tensorflow 2.4.1 python 3.6~3.8(GPU 사용 시, cuDNN 8.0 / CUDA 11.0 설치. pip install tensorflow)
 * pip install tf-slim, tflite_support, pycocotools
 
+**사전에 label과 image를 tfrecord로 변환 해주면 이후에 모델 학습할때 더 효율적이다**
+
 ### [1. Tensorflow Object Detection API 설치](./models-master) 
 
 ### [2. 사용할 모델 정하고 설정하기](./SSD-MobileNet-V2_FPNLite_640x640)

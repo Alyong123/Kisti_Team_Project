@@ -2,7 +2,7 @@
 
 다음 환경에서 작동하니 작업 환경을 확인
 
-* Tensorflow 2.4.1python 3.6~3.8(GPU 사용 시, cuDNN 8.0 / CUDA 11.0 설치. pip install tensorflow)
+* Tensorflow 2.4.1 python 3.6~3.8(GPU 사용 시, cuDNN 8.0 / CUDA 11.0 설치. pip install tensorflow)
 * pip install tf-slim, tflite_support, pycocotools
 
 ### [1. Tensorflow Object Detection API 설치](./models-master) 

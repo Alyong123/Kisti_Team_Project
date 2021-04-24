@@ -2,7 +2,7 @@ object detection api의 설치가 완료되었다면 이제 학습을 위해 COC
 
 * 여기서 주의할점은 model zoo에 존재하는 모든 모델들이 TFLite로의 export를 지원하지 않는다는 점이다. Head가 SSD인 모델들만 지원한다고 하니, TFLite로 export하는 경우에는 SSD 모델만 선택한다.
 
-### 다음 2개의 파일을 이용해 모델을 수정
+### 다음 2개의 파일을 이용해 모델을 조정
 
 #### 1.object-detection.pbxt 를 통해 탐지할 객체를 라벨링한다.
 

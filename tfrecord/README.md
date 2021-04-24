@@ -11,4 +11,4 @@
 *  min / width, height 형식은` min / max로 바꿔라`
 
 #### 실행 방법
-`python generate_tfrecord.py --csv_input=라벨 csv 파일 경로 --output_path=생성할 경로/이름.tfrecord--image_dir=이미지 데이터가 포함된 폴더 경로`
+`python generate_tfrecord.py --csv_input=라벨링 한 csv 파일 경로 --output_path=생성할 경로/이름.tfrecord--image_dir=이미지 데이터가 포함된 폴더 경로`

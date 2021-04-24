@@ -1,5 +1,7 @@
 ## 모델을 학습시키고 안드로이드 애플리케이션에 사용할수 있도록 바꾸는 작업
 
+● Tensorflow 2.4.1python 3.6~3.8(GPU 사용 시, cuDNN 8.0 / CUDA 11.0 설치. pip install tensorflow)pip install tf-slim, tflite_support, pycocotools
+
 ### [1. Tensorflow Object Detection API 설치](./models-master) 
 
 ### [2. 사용할 모델 정하고 학습](./SSD-MobileNet-V2_FPNLite_640x640)

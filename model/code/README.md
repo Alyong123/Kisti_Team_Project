@@ -17,7 +17,7 @@
 <br>
 <br>
 
-### 3. tflite_converter.py: .pb 형식의 모델을 tflite로 변환
+### 3. tflite_converter.py:  .pb 형식의 모델을 tflite로 변환
 실행 방법
 <br>
 

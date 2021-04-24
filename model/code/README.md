@@ -9,7 +9,7 @@
 <br>
 <br>
 
-### 2. export_tflite_graph_tf2.py: .pb 형태의 모델 파일 생성
+### 2. export_tflite_graph_tf2.py:  .pb 형태의 모델 파일 생성
 실행 방법
 <br>
 

@@ -4,7 +4,7 @@
 
 
 
-## TensorFlow Lite Object Detection Android Demo
+## TensorFlow Lite Object Detection [Android Demo](https://github.com/tensorflow/examples/tree/master/lite/examples/object_detection/android)
 
 ### Overview
 

@@ -1,4 +1,4 @@
-## Android Demo 코드를 프로젝트에 맞게 수정, 추가한 안드로이드 코드
+## Android Demo 를 프로젝트에 맞게 수정, 추가한 Android 코드
 
 * 프로젝트에서 사용한 **[tflite, labelmap 파일](./app/src/main/assets)**
 

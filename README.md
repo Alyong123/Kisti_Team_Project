@@ -49,8 +49,8 @@ class는 탐지하고자 하는 객체로 다음과 같이 라벨링 하였다.
 
 ### 모델
 
-* 모델 학습시 성능과 속도 향상을 위해 라벨링된 csv 파일과 Dataset의 이미지 파일을 tfrecord로 변환
-* **[SSD-MobileNet-V2 FPNLite 640x640](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md)** 모델 에 tfrecord파일을  **전이 학습** 시켰다
+* 모델 학습시 성능과 속도 향상을 위해 라벨링된 csv 파일과 Dataset의 이미지 파일을 **[tfrecord로 변환](./)**
+* **[SSD-MobileNet-V2 FPNLite 640x640](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md)** 모델 에 tfrecord 파일을  **전이 학습** 시켰다
 
 <br>
 

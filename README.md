@@ -88,7 +88,9 @@ class는 탐지하고자 하는 객체로 다음과 같이 라벨링 하였다.
 <br>
 
 #### 그 밖의 기능
-![화면 캡처 2021-04-25 125956](https://user-images.githubusercontent.com/68493312/115981550-99147480-a5cf-11eb-9fed-edcd546f9577.png) ![화면 캡처 2021-04-25 130011](https://user-images.githubusercontent.com/68493312/115981551-9a45a180-a5cf-11eb-9964-7b6edd0d24a5.png)
+![화면 캡처 2021-04-25 125956](https://user-images.githubusercontent.com/68493312/115981550-99147480-a5cf-11eb-9fed-edcd546f9577.png) 
+![화면 캡처 2021-04-25 130011](https://user-images.githubusercontent.com/68493312/115981551-9a45a180-a5cf-11eb-9964-7b6edd0d24a5.png)
+
 <br>
 
 ### 프로젝트에 관한 더 자세한 설명은 [TeamProject.pdf 참조](./TeamProject.pdf)

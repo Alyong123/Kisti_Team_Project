@@ -66,6 +66,7 @@ class는 탐지하고자 하는 객체로 다음과 같이 라벨링 하였다.
 <br>
 전이 학습을 위해 사용한 **[SSD-MobileNet-V2 FPNLite 640x640](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md)** 의 경우 탐지하는 객체가 다르기는 하였지만 실제 객체를 탐지하는 데에는 문제가 없었다. 
 **[SSD-MobileNet-V2 FPNLite 640x640](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md)** 모델 보다 **학습한 모델**의 결과 값이 더 높게 나왔기에 사용해도 좋다고 판단하였다.
+
 <br>
 
 **모델에 관련된 보다 더 자세한 사항은** [**model 참조**](./model)

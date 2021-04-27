@@ -6,6 +6,10 @@
 
 `python model_main.py --model_dir=학습 중 체크포인트가 저장될 폴더 경로--pipeline_config_path=학습할 모델의 pipeline.config 파일의 경로`
 `(--checkpoint_dir=학습한 체크포인트가 저장된 경로 model_dir와 동일 / 입력 시 validation mode)`
+
+**Tensorboard을 이용하여 모델 학습 상황을 그래프로 확인할 수 있다.**
+* 학습하고 있는 모델의 체크포인트 가 저장되는 model_dir 경로를 logdir로 지정
+`tensorboard --logdir=model_dir경로`
 <br>
 <br>
 

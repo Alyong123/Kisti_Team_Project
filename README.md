@@ -15,6 +15,10 @@
 * 신호등(초록 색, 빨간 색)과 횡단보도, 자동차를 탐지 할 뿐만 아니라,  횡단보도 보행 시 상황에 따라 각기 다른 음성 안내 를 지원한다.
 
 <br>
+
+## 프로젝트에 관한 더 자세한 설명은 [TeamProject.pdf](./TeamProject.pdf) 와 [발표 영상](https://www.youtube.com/watch?v=iBPTb1Iw1sE) 참조 
+
+<br>
 <br>
 
 ### 시연 영상 (클릭 하세요)
